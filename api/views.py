@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 
 from .models import *
 
+def return_json(request, json):
+    return render(request, "json_view.html", {"json": json})
+
 # Create your views here.
 @require_POST
 def add_asset(request):
@@ -15,9 +18,9 @@ def add_asset(request):
         asset.price = request.POST.get("price")
         asset.date_of_last_maintainence = request.POST.get("date_of_last_maintainence")
         asset.save()
-        return JsonResponse({"success": True})
+        return return_json(request, {"success": True})
     except:
-        return JsonResponse({"success": False})
+        return return_json(request, {"success": False})
 
 @require_POST
 def add_task(request):
@@ -29,9 +32,9 @@ def add_task(request):
             asset = request.POST.get("asset").split("(")[-1][:-1]
         task.asset = Asset.objects.get(pk=asset)
         task.save()
-        return JsonResponse({"success": True})
+        return return_json(request, {"success": True})
     except:
-        return JsonResponse({"success": False})
+        return return_json(request, {"success": False})
 
 @require_POST
 def add_worker(request):
@@ -41,12 +44,12 @@ def add_worker(request):
     worker.join_date = request.POST.get("join_date")
     worker.date_of_birth = request.POST.get("date_of_birth")
     worker.save()
-    return JsonResponse({"success": True})
+    return return_json(request, {"success": True})
 
 @require_GET
 def get_all_assets(request):
     assets = list(Asset.objects.all().values())
-    return JsonResponse(assets, safe=False)
+    return return_json(request, assets)
 
 @require_POST
 def allocate_task(request):
@@ -62,14 +65,14 @@ def allocate_task(request):
         task.worker = Worker.objects.get(pk=worker)
         task.time_to_be_performed_by = request.POST.get("tbpb")
         task.save()
-        return JsonResponse({"success": True})
+        return return_json(request, {"success": True})
     except:
-        return JsonResponse({"success": True})
+        return return_json(request, {"success": True})
 
 @require_GET
 def get_worker_task(request, worker_id):
     worker = Task.objects.filter(worker__workerid=worker_id)
-    return JsonResponse(list(worker.values()), safe=False)
+    return return_json(request, list(worker.values()), safe=False)
 
 def get_worker_taskview(request, worker_id):
     task = Task.objects.filter(worker__workerid=worker_id)
