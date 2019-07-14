@@ -8,6 +8,6 @@ urlpatterns = [
     path('add-worker/', views.add_worker, name="add_worker"),
     path('assets/all/', views.get_all_assets, name="get_all_assets"),
     path('allocate-task/', views.allocate_task, name="allocate_task"),
-    path('worker/<str:worker_id>/', views.get_worker_task, name="worker_task"),
-    path('worker/<str:worker_id>/view/', views.get_worker_taskview),
+    path('get-tasks-for-worker/<str:worker_id>/', views.get_worker_task, name="worker_task"),
+    path('get-tasks-for-worker/<str:worker_id>/view/', views.get_worker_taskview),
 ]

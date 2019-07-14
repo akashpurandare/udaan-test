@@ -1,0 +1,31 @@
+This project is created on Django and to be hosted on https://udaan-akash.herokuapp.com
+To use this project, the following API have been implemented successfully over JSON:
+1. POST Add Asset (/add-asset/) - assetid, assetname, date_of_purchase, price, date_of_last_maintainence as the POST fields
+2. POST Add Task (/add-task/) - taskid, taskname, task_description, asset(assetid)
+3. POST Add Worker (/add-worker/) - workerid, workername, worker_address, join_date, date_of_birth
+4. GET All Assets in List Form (/assets/all/)
+5. POST Allocate Task (/allocate-task/) - taskid, workerid, assetid, time_to_be_performed_by
+6. GET Worker's Tasks (/get-task-for-worker/<worker_id>/)
+
+Along with the above API, the following frontend has been created by using Bootstrap and Django Template Language
+1. Add Asset Form (/asset/)
+2. Add Task Form (/task/)
+3. Add Worker Form (/worker/)
+4. Allocate Task Form (/allocate/)
+5. View all assets Table (/view_assets/)
+6. All workers' list (/view_worker/)
+7. View specific worker's tasks (/get-task-for-worker/<worker_id>/view/)
+
+The database used is SQLite and the standard Django Model interface with Fields have been used.
+
+
+To use the project, do the following:
+1. Install Django 2.2 or equivalent using pip (pip install django)
+2. Go to the project folder and run "python manage.py makemigrations"
+3. Then run "python manage.py migrate"
+4. Then finally run "python manage.py runserver"
+5. Open the browser and go to "http://localhost:8000/"
+
+If the database and the admin panel is to be accessed:
+1. Run "python manage.py createsuperuser" and enter the details
+2. Go to "http://localhost:8000/admin/" and login to view the panels.
