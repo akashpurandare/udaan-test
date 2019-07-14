@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Add Task</h1>
+<form class="col-8 mx-auto" action="{% url 'add_task' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="taskname">Task Name</label>
+        <input class="form-control" id="taskname" name="taskname" placeholder="Enter Task Name" required>
+    </div>
+    <div class="form-group">
+        <label for="task_description">Task Description</label>
+        <textarea class="form-control" id="task_description" name="task_description" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="asset">Select Asset</label>
+      <select class="form-control" id="asset" name="asset">
+        {% for asset in assets %}
+            <option>{{asset.assetname}}({{asset.assetid}})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

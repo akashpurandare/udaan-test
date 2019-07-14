@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center">Allocate Task</h1>
+    <ul>
+        {% for worker in workers %}
+            <li><a href="/worker/{{worker.workerid}}/view/">{{worker.workername}}({{worker.workerid}})</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

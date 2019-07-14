@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Asset ID</th>
+      <th scope="col">Asset Name</th>
+      <th scope="col">Date Of Purchase</th>
+      <th scope="col">Price</th>
+      <th scope="col">Date of Last Maintainence</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for asset in assets %}
+    <tr>
+      <th scope="row">{{asset.assetid}}</th>
+      <td>{{asset.assetname}}</td>
+      <td>{{asset.date_of_purchase}}</td>
+      <td>{{asset.price}}</td>
+      <td>{{asset.date_of_last_maintainence}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

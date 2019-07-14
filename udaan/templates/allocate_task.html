@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-center">Allocate Task</h1>
+<form class="col-8 mx-auto" action="{% url 'allocate_task' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="task">Select Task</label>
+      <select class="form-control" id="task" name="task">
+        {% for task in tasks %}
+            <option>{{task.taskname}}({{task.taskid}})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="worker">Select Worker</label>
+      <select class="form-control" id="worker" name="worker">
+        {% for worker in workers %}
+            <option>{{worker.workername}}({{worker.workerid}})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="asset">Select Asset</label>
+      <select class="form-control" id="asset" name="asset">
+        {% for asset in assets %}
+            <option>{{asset.assetname}}({{asset.assetid}})</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="tbpb">To Be Performed By</label>
+        <input type="datetime-local" class="form-control" id="tbpb" name="tbpb" placeholder="To Be Performed By" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

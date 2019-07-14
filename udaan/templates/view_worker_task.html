@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Task ID</th>
+      <th scope="col">Task Name</th>
+      <th scope="col">Task Description</th>
+      <th scope="col">To Be Performed By</th>
+      <th scope="col">Time of Allocation</th>
+      <th scope="col">Asset ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr>
+      <th scope="row">{{task.taskid}}</th>
+      <td>{{task.taskname}}</td>
+      <td>{{task.task_description}}</td>
+      <td>{{task.time_to_be_performed_by}}</td>
+      <td>{{task.time_of_allocation}}</td>
+      <td>{{task.asset.assetname}}({{task.asset.assetid}})</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

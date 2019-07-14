@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center">Add Worker</h1>
+<form class="col-8 mx-auto" action="{% url 'add_worker' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="workername">Worker Name</label>
+        <input class="form-control" id="workername" name="workername" placeholder="Enter Worker Name" required>
+    </div>
+    <div class="form-group">
+        <label for="worker_address">Worker Address</label>
+        <input class="form-control" id="worker_address" name="worker_address" placeholder="Worker Address" required>
+    </div>
+    <div class="form-group">
+        <label for="join_date">Joining Date</label>
+        <input class="form-control" type="date" id="join_date" name="join_date" placeholder="Joining Date" required>
+    </div>
+    <div class="form-group">
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" placeholder="Date of Birth" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
